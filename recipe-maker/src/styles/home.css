@@ -1,0 +1,41 @@
+.vector {
+  clip-path: path(
+    "M 0 0 Q 0 50 0 350 Q 50 350 150 400 C 250 450 550 450 650 400 C 750 350 800 250 1500 350 L 1500 0 Q 500 0 0 0 "
+  );
+
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: #305cb5;
+  mix-blend-mode: normal;
+  border: 1px solid #305cb5;
+  box-shadow: 0px 26px 35px rgba(0, 0, 0, 0.25);
+  z-index: -10;
+  animation: 20s vectorChange ease-in-out infinite alternate-reverse;
+}
+
+@keyframes vectorChange {
+  0% {
+    clip-path: path(
+      "M 0 0 Q 0 50 0 350 Q 50 350 150 400 C 250 450 550 450 650 400 C 750 350 800 250 1950 350 L 1950 0 Q 400 0 0 0 "
+    );
+  }
+  100% {
+    clip-path: path(
+      "M 0 0 Q 0 50 0 350 Q 350 250 650 400 C 660 400 680 450 1050 450 C 1500 400 1300 260 1950 350 L 1950 0 Q 400 0 0 0 "
+    );
+  }
+}
+
+@media (min-width: 1250px){
+  .vector{
+    transform: scale(1) ;
+  }
+}
+@media (max-width: 500px){
+  .vector{
+    transform: translateY(40px) ;
+  }
+}

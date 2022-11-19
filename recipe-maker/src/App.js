@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles/App.scss";
+import "./styles/app.css";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/globalComponents/Navbar";
+import Home from "./pages/Home";
 
+import RecipeDetailes from "./pages/RecipeDetailes";
+import Footer from "./components/globalComponents/footer/Footer";
+import ProtectedRoute from "./route/ProtectedRoute";
+
+import Auth from "./pages/Auth";
+import Search from "./pages/Search";
+import UserProfile from "./pages/UserProfile";
+import OutletContainer from "./pages/OutletContainer";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<OutletContainer/>}>
+          <Route path="cuisine" element={<Search searchParam="cuisine"/>}/>
+          <Route path="type" element={<Search searchParam="type"/>}/>
+          <Route path="diet" element={<Search searchParam="diet"/>}/>
+        </Route>
+        <Route path="/signUp" element={<Auth type="Register" />} />
+        <Route path="/login" element={<Auth type="login" />} />
+        <Route path="/recipe/:id" element={<RecipeDetailes />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/user-profile" element={<UserProfile />} />
+        </Route>
+      </Routes>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,4 @@
+.available:hover{
+    cursor: pointer;
+    text-shadow: 4px 4px 6px #7894d7;
+}

@@ -1,0 +1,14 @@
+.carousel-card{
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+.carousel-card:hover{ 
+    scale: 1.05;
+    transition: all .2s ease-in;
+}
+
+.carousel-card a{
+    text-decoration: none;
+    color: black;
+}
