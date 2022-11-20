@@ -12,12 +12,12 @@ const Auth = ({ type }) => {
     type === "Register" ? <Register type={type} /> : <SignIn type={type} />;
 
   return (
-    <Container fluid className="d-flex justify-content-center my-3" style={{height:"inherit"}}>
-      <Row>
+    <Container fluid className="d-flex justify-content-center align-items-center my-3" style={{height:"100%"}}>
+      <Row >
         <Col
           // xs={{ span: 6, offset: 3 }}
-          style={{width: "500px"}}
-          className="d-flex justify-content-center mb-3 flex-column bg-darkAccent text-light rounded-5">
+          style={{width: "100%"}}
+          className="d-flex justify-content-center mb-3 mx-3 flex-column bg-darkAccent text-light rounded-5">
           {correctForm}
         </Col>
       </Row>

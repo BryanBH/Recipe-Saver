@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/auth/authActions";
 import { useNavigate } from "react-router-dom";
 import { updateError } from "../../redux/auth/authSlice";
-
+import "../../styles/input.css";
 const SignIn = ({ type }) => {
   const [user, setUser] = useState({
     email: "",
@@ -52,6 +52,7 @@ const SignIn = ({ type }) => {
                 placeholder="Email Address"
                 name="email"
                 value={user.email}
+                className="input-size"
                 onChange={handleChange}
               />
             </Form.Group>
