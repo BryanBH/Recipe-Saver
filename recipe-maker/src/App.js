@@ -18,10 +18,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<OutletContainer/>}>
-          <Route path="cuisine" element={<Search searchParam="cuisine"/>}/>
-          <Route path="type" element={<Search searchParam="type"/>}/>
-          <Route path="diet" element={<Search searchParam="diet"/>}/>
+        <Route path="/search" element={<OutletContainer />}>
+          <Route path="cuisine" element={<Search searchParam="cuisine" />} />
+          <Route path="type" element={<Search searchParam="type" />} />
+          <Route path="diet" element={<Search searchParam="diet" />} />
         </Route>
         <Route path="/signUp" element={<Auth type="Register" />} />
         <Route path="/login" element={<Auth type="login" />} />
@@ -29,6 +29,10 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/user-profile" element={<UserProfile />} />
         </Route>
+        <Route
+          path="*"
+          element={<h1 className="text center">Page not found...</h1>}
+        />
       </Routes>
       <Footer />
     </div>
