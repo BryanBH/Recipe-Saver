@@ -9,7 +9,7 @@ export const saveRecipeDetails = createAsyncThunk(
     const { auth } = getState();
     try {
       const { data } = await axios.post(
-        "https://recipe-saver-bh.herokuapp.com/recipe/saveRecipe",
+        "/recipe/saveRecipe",
         {
           data: {
             userId: auth.currentUser.id,
