@@ -9,7 +9,7 @@ export const saveRecipeDetails = createAsyncThunk(
     const { auth } = getState();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/recipe/saveRecipe",
+        "https://recipe-saver-bh.herokuapp.com/recipe/saveRecipe",
         {
           data: {
             userId: auth.currentUser.id,
@@ -34,14 +34,11 @@ export const getSavedRecipes = createAsyncThunk(
   async (args, { getState, rejectWithValue }) => {
     try {
       const { auth } = getState();
-      const { data } = await axios.get(
-        "/recipe/getUserRecipes",
-        {
-          params: {
-            userId: auth.currentUser.id,
-          },
-        }
-      );
+      const { data } = await axios.get("/recipe/getUserRecipes", {
+        params: {
+          userId: auth.currentUser.id,
+        },
+      });
       return data.savedRecipes;
     } catch (error) {
       // return custom error message from API if any
@@ -63,14 +60,11 @@ export const fetchRecipeCategories = createAsyncThunk(
   "/recipe/fetchRecipeCategories",
   async (search, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(
-        "/recipe/api/fetchRecipeByCuisine",
-        {
-          data: {
-            search,
-          },
-        }
-      );
+      const { data } = await axios.post("/recipe/api/fetchRecipeByCuisine", {
+        data: {
+          search,
+        },
+      });
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -88,14 +82,11 @@ export const fecthRecipesByType = createAsyncThunk(
   "/recipe/fetchRecipeByType",
   async (search, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(
-        "/recipe/api/fetchRecipeByType",
-        {
-          data: {
-            search,
-          },
-        }
-      );
+      const { data } = await axios.post("/recipe/api/fetchRecipeByType", {
+        data: {
+          search,
+        },
+      });
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -111,14 +102,11 @@ export const fetchRecipesByDiet = createAsyncThunk(
   "'/recipe/fetchRecipeByDiet",
   async (diet, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(
-        "/recipe/api/fetchRecipeByDiet",
-        {
-          data: {
-            diet,
-          },
-        }
-      );
+      const { data } = await axios.post("/recipe/api/fetchRecipeByDiet", {
+        data: {
+          diet,
+        },
+      });
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -142,14 +130,11 @@ export const fetchRecipeInformation = createAsyncThunk(
       return results;
     }
     try {
-      const { data } = await axios.get(
-        "/recipe/api/fetchRecipeInformation",
-        {
-          params: {
-            id,
-          },
-        }
-      );
+      const { data } = await axios.get("/recipe/api/fetchRecipeInformation", {
+        params: {
+          id,
+        },
+      });
 
       return data.data;
     } catch (error) {
@@ -168,15 +153,12 @@ export const deleteRecipe = createAsyncThunk(
   async (recipeId, { getState, rejectWithValue }) => {
     try {
       const { auth } = getState();
-      const { data } = await axios.post(
-        "/recipe/deleteRecipe",
-        {
-          data: {
-            userId: auth.currentUser.id,
-            recipeId,
-          },
-        }
-      );
+      const { data } = await axios.post("/recipe/deleteRecipe", {
+        data: {
+          userId: auth.currentUser.id,
+          recipeId,
+        },
+      });
       return data.savedRecipes;
     } catch (error) {
       // return custom error message from API if any
